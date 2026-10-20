@@ -1,0 +1,19 @@
+Jane Doe
+jane.doe@example.com | +91 98765 43210
+
+Summary
+Computer science graduate who enjoys building small web apps and data tools.
+
+Skills
+Python, Flask, SQL, Git, HTML, CSS, Pandas
+
+Experience
+Intern - Acme Tech (2025)
+Built internal dashboards using Python and Flask. Wrote SQL queries to analyze usage data.
+Collaborated with a team of five using Git and Agile practices.
+
+Education
+B.E. Computer Science, Anna University (2021 - 2025)
+
+Projects
+Expense tracker web app built with Flask and MySQL.

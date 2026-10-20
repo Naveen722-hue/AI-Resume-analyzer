@@ -1,0 +1,4 @@
+Junior Python Developer
+
+We're looking for a developer with experience in Python, Flask, SQL and Git.
+Knowledge of Docker and AWS is a plus. Good communication and teamwork required.

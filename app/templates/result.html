@@ -1,0 +1,48 @@
+{% extends "base.html" %}
+{% block title %}Results - AI Resume Analyzer{% endblock %}
+{% block content %}
+<h1>Results for {{ filename }}</h1>
+
+<div class="score-card">
+  <div class="score">{{ result.score }}<span>/100</span></div>
+  <div class="muted">{{ result.word_count }} words</div>
+</div>
+
+{% if result.match_pct is not none %}
+<section>
+  <h2>Job match: {{ result.match_pct }}%</h2>
+  <p><strong>Matched:</strong>
+    {% for s in result.matched_skills %}<span class="tag good">{{ s }}</span>{% else %}none{% endfor %}</p>
+  <p><strong>Missing:</strong>
+    {% for s in result.missing_skills %}<span class="tag bad">{{ s }}</span>{% else %}nothing 🎉{% endfor %}</p>
+</section>
+{% endif %}
+
+<section>
+  <h2>Skills found</h2>
+  {% for s in result.skills_found %}<span class="tag">{{ s }}</span>{% else %}<p class="muted">No known skills detected.</p>{% endfor %}
+</section>
+
+<section>
+  <h2>Sections detected</h2>
+  {% for s in result.sections_found %}<span class="tag">{{ s }}</span>{% else %}<p class="muted">None detected.</p>{% endfor %}
+</section>
+
+<section>
+  <h2>Suggestions</h2>
+  <ul>{% for t in result.tips %}<li>{{ t }}</li>{% else %}<li>Looks solid!</li>{% endfor %}</ul>
+</section>
+
+{% if asked_for_ai %}
+<section>
+  <h2>AI feedback</h2>
+  {% if ai_feedback %}
+    <pre class="ai">{{ ai_feedback }}</pre>
+  {% else %}
+    <p class="muted">AI feedback isn't available. Check that ANTHROPIC_API_KEY is set in your .env file.</p>
+  {% endif %}
+</section>
+{% endif %}
+
+<a class="btn btn-primary" href="{{ url_for('main.index') }}">Analyze another</a>
+{% endblock %}

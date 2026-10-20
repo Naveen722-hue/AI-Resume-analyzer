@@ -1,0 +1,13 @@
+{
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "name": "Run Resume Analyzer",
+      "type": "debugpy",
+      "request": "launch",
+      "program": "${workspaceFolder}/resume-analyzer/run.py",
+      "console": "integratedTerminal",
+      "envFile": "${workspaceFolder}/resume-analyzer/.env"
+    }
+  ]
+}
