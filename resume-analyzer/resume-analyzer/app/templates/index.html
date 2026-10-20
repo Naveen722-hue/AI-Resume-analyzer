@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+{% block content %}
+<h1>Analyze your resume</h1>
+<p class="muted">Upload a PDF, DOCX or TXT file. Paste a job description to see how well you match.</p>
+
+<form action="{{ url_for('main.analyze_resume') }}" method="post" enctype="multipart/form-data" id="upload-form">
+  <label class="form-label">Resume file
+    <input class="form-control" type="file" name="resume" accept=".pdf,.docx,.txt" required>
+  </label>
+
+  <label class="form-label">Job description (optional)
+    <textarea class="form-control" name="job_description" rows="8" placeholder="Paste the job posting here..."></textarea>
+  </label>
+
+  <div class="form-check check">
+    <input class="form-check-input" type="checkbox" id="use-ai" name="use_ai">
+    <label class="form-check-label" for="use-ai">Get AI feedback (needs API key)</label>
+  </div>
+
+  <button class="btn btn-primary" type="submit" id="submit-btn">Analyze</button>
+</form>
+{% endblock %}
