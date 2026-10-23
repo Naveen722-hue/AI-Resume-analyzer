@@ -37,6 +37,28 @@ python run.py
 ```
 Open http://127.0.0.1:5000. In VS Code you can also press F5 ("Run Resume Analyzer").
 
+## Deploy to Render
+
+The local address above only works on the computer running the app. To open it
+from a phone over the internet, deploy it to a hosting service first. Render
+will provide the public address after deployment.
+
+This repository includes a `render.yaml` deployment configuration. To deploy:
+
+1. Create a GitHub account if you don't already have one, then create a
+   repository and upload this project. Do not upload `.env`, `.venv`, or
+   `__pycache__` folders, and do not publish API keys.
+2. Sign in to Render, choose **New** > **Web Service**, and connect the GitHub
+   repository.
+3. Render reads `render.yaml` to install dependencies and start the app. After
+   deployment, Render displays the public URL; open that URL on your phone.
+
+The Render URL remains the same between deployments, though free services may
+spin down after inactivity and take a little while to respond to the next
+request. Resume uploads are temporary and the app deletes them after parsing.
+AI feedback is optional; configure `ANTHROPIC_API_KEY` privately in the Render
+service environment only if you want that feature.
+
 ## Tests
 ```bash
 pytest
