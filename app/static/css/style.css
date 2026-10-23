@@ -32,12 +32,19 @@ header {
 	border-bottom: 3px solid var(--blue-light);
 }
 
-header a {
+.brand {
+	display: inline-flex;
+	min-height: 60px;
+	align-items: center;
+	gap: 11px;
 	color: #fff;
 	font-size: 15px;
 	font-weight: 700;
 	text-decoration: none;
 }
+
+.brand img { display: block; width: 38px; height: 38px; flex: 0 0 auto; }
+.brand:focus-visible { outline: 2px solid var(--blue-light); outline-offset: 4px; }
 
 main {
 	width: min(100% - 40px, 780px);
