@@ -33,7 +33,13 @@ def analyze_resume():
 
     save_name = f"{uuid.uuid4().hex}_{secure_filename(file.filename)}"
     save_path = Path(current_app.config["UPLOAD_FOLDER"]) / save_name
-    file.save(save_path)
+    try:
+        save_path.parent.mkdir(parents=True, exist_ok=True)
+        file.save(save_path)
+    except OSError:
+        current_app.logger.exception("Could not save uploaded resume")
+        flash("Couldn't save that file. Please try again.")
+        return redirect(url_for("main.index"))
 
     try:
         text = extract_text(save_path)
@@ -41,6 +47,7 @@ def analyze_resume():
         flash(str(err))
         return redirect(url_for("main.index"))
     except Exception:
+        current_app.logger.exception("Could not read uploaded resume")
         flash("Couldn't read that file. Is it corrupted or password protected?")
         return redirect(url_for("main.index"))
     finally:
