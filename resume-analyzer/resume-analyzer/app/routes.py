@@ -33,8 +33,8 @@ def analyze_resume():
 
     save_name = f"{uuid.uuid4().hex}_{secure_filename(file.filename)}"
     save_path = Path(current_app.config["UPLOAD_FOLDER"]) / save_name
+    save_path.parent.mkdir(parents=True, exist_ok=True)
     file.save(save_path)
-
     try:
         text = extract_text(save_path)
     except UnsupportedFileError as err:
